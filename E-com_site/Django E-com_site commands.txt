@@ -1,0 +1,157 @@
+Django is actually used to program servers so that they can handle the incoming requests and send back an appropriate response.
+$ conda create --name myDjangoEnv django
+$ n
+
+$ conda create --name myDjangoEnv python=3.12.0
+#python latest version.
+$ y
+
+# To activate this environment, use
+#     $ conda activate myDjangoEnv
+# To deactivate an active environment, use
+#     $ conda deactivate
+
+$ conda info --envs
+
+$ activate myDjangoEnv
+(myDjangoEnv)$ conda install django
+(myDjangoEnv) $ y
+
+(myDjangoEnv) $ python         #To check the python version
+>>>quit()
+
+(myDjangoEnv) $ deactivate    #Back to the terminal/CMD.
+
+$ python
+#To check the python version
+>>>quit()
+***Example of new project in Django....!***
+
+$ cd Downloads\Django Portfolio
+#to make a path for the Django project.
+
+$ mkdir E-com_site
+
+$ cd E-com_site
+
+$ activate myDjangoEnv
+
+(myDjangoEnv) $ django-admin startproject ecomsite
+
+(myDjangoEnv) $ cd ecomsite
+
+(myDjangoEnv) $ python manage.py runserver
+
+***Example of new Application in Django...!***
+
+(myDjangoEnv) $ django-admin startapp shop
+
+(myDjangoEnv) $ python manage.py runserver
+
+(myDjangoEnv) $ python manage.py migrate
+
+(myDjangoEnv) $ python manage.py makemigrations  
+
+(myDjangoEnv) $ python manage.py migrate
+
+models.py:
+from django.db import models
+
+# Create your models here.
+class Products(models.Model):
+    title = models.CharField(max_length=200)
+    price = models.FloatField()
+    discount_price = models.FloatField()
+    category = models.CharField(max_length=200)
+    description = models.TextField()
+    image = models.CharField(max_length=300)
+
+(myDjangoEnv) $ python manage.py runserver
+
+
+Store data into database through shell.
+(myDjangoEnv) $ python manage.py shell
+(InteractiveConsole)
+>>> from food_app.models import Item
+>>> Item.objects.all()
+<QuerySet []>
+>>> a = Item(item_name="Pizza",item_desc="Cheesy Pizza",item_price=20)
+>>> a.save()
+>>> a.id
+1
+>>> a.pk (primary key= an attribute which uniquely defines a particular row.)
+1
+>>> b = Item(item_name="Burger",item_desc="Cheesy Burger",item_price=10)
+>>> b.save()
+>>> b.id
+>>> c = Item(item_name="Biryani",item_desc="Chicken Biryani",item_price=30)
+>>> c.save()
+>>> c.id
+>>> Item.objects.all() 
+ def __str__(self):
+        return self.item_name
+
+>>> exit()
+
+(myDjangoEnv) $ python manage.py shell
+(InteractiveConsole)
+>>> from food_app.models import Item
+>>> Item.objects.all()
+>>> exit()
+
+
+
+python manage.py createsuperuser
+
+Username (leave blank to use 'aravi'): aravind
+Email address: aravind007santhosh@gmail.com
+Password:
+Password (again):
+Superuser created successfully.
+(myDjangoEnv) $ python manage.py runserver
+
+*Queryset = a collection of objects stored in your database.
+
+
+
+(myDjangoEnv) $ python manage.py makemigrations food_app
+
+(myDjangoEnv) $ python manage.py sqlmigrate food_app 0002
+
+(myDjangoEnv) $ python manage.py migrate
+
+(myDjangoEnv) $ python manage.py runserver
+
+(myDjangoEnv) $ django-admin startapp users
+
+(myDjangoEnv) $ pip install pillow 
+OR
+(myDjangoEnv) $ sudo pip install pillow
+
+(myDjangoEnv) $ python manage.py makemigrations
+
+(myDjangoEnv) $ python manage.py migrate
+
+
+python manage.py shell
+(InteractiveConsole)
+>>> from django.contrib.auth.models import User
+>>> user = User.objects.filter(username='aravin
+d').first()
+>>> user
+<User: aravind>
+>>> user.profile
+<Profile: aravind>
+>>> user.profile.image
+<ImageFieldFile: profile_pictures/Aravind_Santhosh_N..jpg>
+>>>exit()
+
+(myDjangoEnv) $ python manage.py runserver
+
+(myDjangoEnv) $ python manage.py makemigrations
+
+(myDjangoEnv) $ python manage.py sqlmigrate food_app 0003
+
+(myDjangoEnv) $ python manage.py migrate
+
+(myDjangoEnv) $ python manage.py runserver
